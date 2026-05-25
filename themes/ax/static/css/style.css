@@ -9,8 +9,6 @@
   --white: #ffffff;
   --gray: #6b7280;
   --light: #f4f4f5;
-  --accent: #2563eb;
-  --accent-dark: #1d4ed8;
 }
 
 html {
@@ -36,19 +34,24 @@ body {
 .hero {
   padding: 6rem 0 5rem;
   text-align: center;
+  background: linear-gradient(135deg, #0f0f1a 0%, #1a1030 50%, #0f1a2e 100%);
+  color: var(--white);
 }
 
 .logo {
   font-size: 4rem;
   font-weight: 800;
   letter-spacing: -0.04em;
-  color: var(--black);
   margin-bottom: 0;
+  background: linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .tagline {
   font-size: 1.25rem;
-  color: var(--gray);
+  color: #94a3b8;
   max-width: 560px;
   margin: 0 auto 2.5rem;
 }
@@ -61,16 +64,17 @@ body {
 }
 
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   padding: 0.6rem 1.4rem;
   border-radius: 6px;
   font-size: 0.95rem;
   font-weight: 500;
   text-decoration: none;
   transition: opacity 0.15s;
-  border: 1px solid #d1d5db;
-  color: var(--black);
-  background: var(--white);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--white);
+  background: rgba(255,255,255,0.08);
 }
 
 .btn:hover {
@@ -78,9 +82,9 @@ body {
 }
 
 .btn-primary {
-  background: var(--black);
+  background: linear-gradient(135deg, #6d28d9, #2563eb);
+  border-color: transparent;
   color: var(--white);
-  border-color: var(--black);
 }
 
 /* Hero mark */
@@ -95,7 +99,7 @@ body {
 .hero-mark svg {
   width: 5.5rem;
   height: 5.5rem;
-  color: var(--black);
+  color: #a78bfa;
 }
 
 /* Button icon */
@@ -103,8 +107,8 @@ body {
 .btn svg {
   width: 1rem;
   height: 1rem;
-  vertical-align: -0.125em;
   margin-right: 0.4rem;
+  flex-shrink: 0;
 }
 
 /* Features */
@@ -121,14 +125,26 @@ body {
 }
 
 .feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 8px;
   margin-bottom: 0.75rem;
 }
 
 .feature-icon svg {
-  width: 1.5rem;
-  height: 1.5rem;
-  color: var(--black);
+  width: 1.25rem;
+  height: 1.25rem;
 }
+
+.feature:nth-child(1) .feature-icon { background: #ede9fe; color: #7c3aed; }
+.feature:nth-child(2) .feature-icon { background: #dbeafe; color: #1d4ed8; }
+.feature:nth-child(3) .feature-icon { background: #d1fae5; color: #065f46; }
+.feature:nth-child(4) .feature-icon { background: #fef3c7; color: #b45309; }
+.feature:nth-child(5) .feature-icon { background: #cffafe; color: #0e7490; }
+.feature:nth-child(6) .feature-icon { background: #fce7f3; color: #9d174d; }
 
 .feature h3 {
   font-size: 1rem;
