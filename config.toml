@@ -36,6 +36,6 @@ theme = 'ax'
   icon        = "arrows"
 
 [[params.features]]
-  title       = "Auditing and observability"
+  title       = "Auditing and policy"
   description = "Full audit trail, observability hooks, and trajectory collection for every execution."
   icon        = "lock"
