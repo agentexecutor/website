@@ -16,6 +16,18 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
+a:not(.btn) {
+  color: #6d28d9;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(109, 40, 217, 0.3);
+  transition: color 0.15s, border-color 0.15s;
+}
+
+a:not(.btn):hover {
+  color: #2563eb;
+  border-bottom-color: rgba(37, 99, 235, 0.5);
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background: var(--white);
@@ -40,13 +52,27 @@ body {
 
 .logo {
   font-size: 4rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.04em;
   margin-bottom: 0;
   background: linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #60a5fa 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.status-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #a78bfa;
+  background: rgba(167, 139, 250, 0.12);
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .tagline {
@@ -85,6 +111,7 @@ body {
   background: linear-gradient(135deg, #6d28d9, #2563eb);
   border-color: transparent;
   color: var(--white);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 /* Hero mark */
@@ -139,12 +166,10 @@ body {
   height: 1.25rem;
 }
 
-.feature:nth-child(1) .feature-icon { background: #ede9fe; color: #7c3aed; }
-.feature:nth-child(2) .feature-icon { background: #dbeafe; color: #1d4ed8; }
-.feature:nth-child(3) .feature-icon { background: #d1fae5; color: #065f46; }
-.feature:nth-child(4) .feature-icon { background: #fef3c7; color: #b45309; }
-.feature:nth-child(5) .feature-icon { background: #cffafe; color: #0e7490; }
-.feature:nth-child(6) .feature-icon { background: #fce7f3; color: #9d174d; }
+.feature-icon {
+  background: var(--white);
+  color: var(--black);
+}
 
 .feature h3 {
   font-size: 1rem;
@@ -157,6 +182,7 @@ body {
   color: var(--gray);
   line-height: 1.6;
 }
+
 
 /* Footer */
 

@@ -50,6 +50,12 @@ body {
   color: var(--white);
 }
 
+.hero .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .logo {
   font-size: 4rem;
   font-weight: 600;
@@ -59,6 +65,20 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.status-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #a78bfa;
+  background: rgba(167, 139, 250, 0.12);
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .tagline {

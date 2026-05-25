@@ -6,23 +6,19 @@ theme = 'ax'
 [params]
   description = "A distributed agent runtime designed for reliability, composability, and efficiency."
   tagline     = "A distributed agent runtime designed for reliability, composability, and efficiency."
+  status      = "Early Preview"
   githubURL        = "https://github.com/google/ax"
   footer      = "AX is an open source project. <a href=\"https://github.com/google/ax\">github.com/google/ax</a>"
 
 [[params.features]]
-  title       = "Reliable by default"
+  title       = "Resumable and autonomous"
   description = "Automatic recovery and resumption from failures, even across complex distributed deployments."
   icon        = "shield"
 
 [[params.features]]
-  title       = "Durable event log"
+  title       = "Durable and consistent"
   description = "Single-writer consistency guarantees and built-in auditing for every agentic operation."
   icon        = "database"
-
-[[params.features]]
-  title       = "Model agnostic"
-  description = "Works with any model or framework. Ships with a built-in Gemini planner."
-  icon        = "puzzle"
 
 [[params.features]]
   title       = "Kubernetes-native"
@@ -30,11 +26,16 @@ theme = 'ax'
   icon        = "server"
 
 [[params.features]]
+  title       = "Model and harness agnostic"
+  description = "Bring your own LLM and planning logic. AX handles execution, durability, and coordination underneath."
+  icon        = "puzzle"
+
+[[params.features]]
   title       = "Open protocols"
-  description = "Speaks A2A and Google ADK protocols alongside the native AX gRPC interface."
+  description = "Native support for MCP, A2A, and other agentic protocols. AX agents can interoperate with tools and agents across the ecosystem."
   icon        = "arrows"
 
 [[params.features]]
-  title       = "Policy & audit controls"
-  description = "Built-in controls for governing what agents are allowed to do and a full audit trail."
+  title       = "Auditing and observability"
+  description = "Full audit trail, observability hooks, and trajectory collection for every execution."
   icon        = "lock"
