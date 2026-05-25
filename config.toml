@@ -4,8 +4,8 @@ title = 'Agent Executor (AX)'
 theme = 'ax'
 
 [params]
-  description = "A distributed agent runtime designed for reliability, composability, and efficiency."
-  tagline     = "A distributed agent runtime designed for reliability, composability, and efficiency."
+  description = "A distributed agent runtime designed for reliability, customizability, and efficiency."
+  tagline     = "A distributed agent runtime designed for reliability, customizability, and efficiency."
   status      = "Early Preview"
   githubURL        = "https://github.com/google/ax"
   footer      = "AX is an open source project from Google. <a href=\"https://github.com/google/ax\">github.com/google/ax</a>"
@@ -16,9 +16,9 @@ theme = 'ax'
   icon        = "shield"
 
 [[params.features]]
-  title       = "Durable and consistent"
-  description = "Single-writer consistency guarantees and built-in auditing for every agentic operation."
-  icon        = "database"
+  title       = "Customizable"
+  description = "The runtime is fully customizable with tools, skills, and purpose-built agents for any domain or workflow."
+  icon        = "wrench"
 
 [[params.features]]
   title       = "Kubernetes-native"
