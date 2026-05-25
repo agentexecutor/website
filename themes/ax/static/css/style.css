@@ -138,8 +138,8 @@ body {
 /* Button icon */
 
 .btn svg {
-  width: 1rem;
-  height: 1rem;
+  width: 1.2rem;
+  height: 1.2rem;
   margin-right: 0.4rem;
   flex-shrink: 0;
 }
