@@ -40,7 +40,7 @@ body {
 
 .logo {
   font-size: 4rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.04em;
   margin-bottom: 0;
   background: linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #60a5fa 100%);
@@ -85,6 +85,7 @@ body {
   background: linear-gradient(135deg, #6d28d9, #2563eb);
   border-color: transparent;
   color: var(--white);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 /* Hero mark */

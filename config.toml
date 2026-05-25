@@ -1,6 +1,6 @@
 baseURL = 'https://agentexecutor.io/'
 languageCode = 'en-us'
-title = 'AX'
+title = 'Agent Executor (AX)'
 theme = 'ax'
 
 [params]
