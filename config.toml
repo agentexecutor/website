@@ -1,0 +1,41 @@
+baseURL = 'https://agentexecutor.io/'
+languageCode = 'en-us'
+title = 'AX'
+theme = 'ax'
+
+[params]
+  description = "A distributed agent runtime designed for reliability."
+  tagline     = "A distributed agent runtime designed for reliability."
+  githubURL   = "https://github.com/google/ax"
+  docsURL     = "https://github.com/google/ax/tree/main/docs"
+  footer      = "AX is an open source project. <a href=\"https://github.com/google/ax\">github.com/google/ax</a>"
+
+[[params.features]]
+  title       = "Reliable by default"
+  description = "Automatic recovery and resumption from failures, even across complex distributed deployments."
+  icon        = "shield"
+
+[[params.features]]
+  title       = "Durable event log"
+  description = "Single-writer consistency guarantees and built-in auditing for every agentic operation."
+  icon        = "database"
+
+[[params.features]]
+  title       = "Model agnostic"
+  description = "Works with any model or framework. Ships with a built-in Gemini planner."
+  icon        = "puzzle"
+
+[[params.features]]
+  title       = "Kubernetes-native"
+  description = "Designed to run on Agent Substrate with first-class Kubernetes support."
+  icon        = "server"
+
+[[params.features]]
+  title       = "Open protocols"
+  description = "Speaks A2A and Google ADK protocols alongside the native AX gRPC interface."
+  icon        = "arrows"
+
+[[params.features]]
+  title       = "Policy & audit controls"
+  description = "Built-in controls for governing what agents are allowed to do and a full audit trail."
+  icon        = "lock"
