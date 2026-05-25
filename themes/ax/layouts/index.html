@@ -28,7 +28,7 @@
       <div class="feature">
         <div class="feature-icon">{{ partial "icon.html" .icon }}</div>
         <h3>{{ .title }}</h3>
-        <p>{{ .description }}</p>
+        <p>{{ .description | safeHTML }}</p>
       </div>
       {{ end }}
     </div>

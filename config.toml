@@ -6,8 +6,7 @@ theme = 'ax'
 [params]
   description = "A distributed agent runtime designed for reliability, composability, and efficiency."
   tagline     = "A distributed agent runtime designed for reliability, composability, and efficiency."
-  githubURL   = "https://github.com/google/ax"
-  docsURL     = "https://github.com/google/ax/tree/main/docs"
+  githubURL        = "https://github.com/google/ax"
   footer      = "AX is an open source project. <a href=\"https://github.com/google/ax\">github.com/google/ax</a>"
 
 [[params.features]]
@@ -27,7 +26,7 @@ theme = 'ax'
 
 [[params.features]]
   title       = "Kubernetes-native"
-  description = "Designed to run on Agent Substrate with first-class Kubernetes support."
+  description = "Designed to run on <a href=\"https://ate.dev\">Agent Substrate</a> with first-class Kubernetes support."
   icon        = "server"
 
 [[params.features]]
