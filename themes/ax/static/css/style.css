@@ -152,12 +152,10 @@ body {
   height: 1.25rem;
 }
 
-.feature:nth-child(1) .feature-icon { background: #ede9fe; color: #7c3aed; }
-.feature:nth-child(2) .feature-icon { background: #dbeafe; color: #1d4ed8; }
-.feature:nth-child(3) .feature-icon { background: #d1fae5; color: #065f46; }
-.feature:nth-child(4) .feature-icon { background: #fef3c7; color: #b45309; }
-.feature:nth-child(5) .feature-icon { background: #cffafe; color: #0e7490; }
-.feature:nth-child(6) .feature-icon { background: #fce7f3; color: #9d174d; }
+.feature-icon {
+  background: var(--white);
+  color: var(--black);
+}
 
 .feature h3 {
   font-size: 1rem;
