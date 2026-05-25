@@ -8,7 +8,7 @@ theme = 'ax'
   tagline     = "A distributed agent runtime designed for reliability, composability, and efficiency."
   status      = "Early Preview"
   githubURL        = "https://github.com/google/ax"
-  footer      = "AX is an open source project. <a href=\"https://github.com/google/ax\">github.com/google/ax</a>"
+  footer      = "AX is an open source project from Google. <a href=\"https://github.com/google/ax\">github.com/google/ax</a>"
 
 [[params.features]]
   title       = "Resumable and autonomous"
