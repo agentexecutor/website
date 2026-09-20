@@ -1,0 +1,118 @@
+{{ $class := .class | default "" }}
+<div class="window window-term {{ $class }}">
+  <div class="window-bar">
+    <span></span><span></span><span></span>
+    <button class="term-toggle" id="term-toggle" type="button" aria-label="Pause animation" title="Pause">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
+      <span>Pause</span>
+    </button>
+  </div>
+  <pre class="term" id="term" aria-live="off"><code>{{- range $i, $step := site.Data.terminal.steps -}}
+{{- if gt $i 0 }}
+{{ end -}}
+<span class="prompt">$</span> <span class="cmd">{{ $step.cmd }}</span>
+{{- range $step.out }}
+<span class="out">{{ . }}</span>
+{{- end -}}
+{{- end }}
+</code></pre>
+</div>
+
+<script>
+  (function () {
+    var el = document.getElementById('term');
+    if (!el) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var steps = {{ site.Data.terminal.steps | jsonify | safeJS }};
+
+    var code = el.querySelector('code');
+    var cursor;
+    var isPaused = false;
+    var pauseResolvers = [];
+
+    function checkPause() {
+      if (!isPaused) return Promise.resolve();
+      return new Promise(function (resolve) {
+        pauseResolvers.push(resolve);
+      });
+    }
+
+    var toggleBtn = document.getElementById('term-toggle');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', function () {
+        isPaused = !isPaused;
+        toggleBtn.setAttribute('aria-label', isPaused ? 'Resume animation' : 'Pause animation');
+        toggleBtn.setAttribute('title', isPaused ? 'Play' : 'Pause');
+        toggleBtn.innerHTML = isPaused
+          ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span>Play</span>'
+          : '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg><span>Pause</span>';
+        if (!isPaused) {
+          while (pauseResolvers.length > 0) {
+            var resolve = pauseResolvers.shift();
+            resolve();
+          }
+        }
+      });
+    }
+
+    function esc(t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+    function follow() { el.scrollTop = el.scrollHeight; }
+    async function sleep(ms) {
+      var remaining = ms;
+      while (remaining > 0) {
+        await checkPause();
+        var step = Math.min(remaining, 50);
+        await new Promise(function (r) { setTimeout(r, step); });
+        if (!isPaused) {
+          remaining -= step;
+        }
+      }
+    }
+
+    function newLine() {
+      code.insertAdjacentHTML('beforeend', '<span class="prompt">$</span> <span class="cmd"></span>');
+      var cmd = code.lastElementChild;
+      cursor = document.createElement('span');
+      cursor.className = 'cursor';
+      code.appendChild(cursor);
+      follow();
+      return cmd;
+    }
+
+    async function typeCmd(text) {
+      var span = newLine();
+      for (var i = 0; i < text.length; i++) {
+        span.textContent += text[i];
+        follow();
+        await sleep(text[i] === ' ' ? 90 : 35 + Math.random() * 45);
+      }
+      await sleep(350);
+      cursor.remove();
+      code.insertAdjacentHTML('beforeend', '\n');
+    }
+
+    async function printOut(lines, slow) {
+      for (var i = 0; i < lines.length; i++) {
+        await sleep(slow && slow[i] != null ? slow[i] : 120);
+        code.insertAdjacentHTML('beforeend', '<span class="out">' + esc(lines[i]) + '</span>\n');
+        follow();
+      }
+    }
+
+    async function run() {
+      for (; ;) {
+        code.innerHTML = '';
+        el.scrollTop = 0;
+        for (var i = 0; i < steps.length; i++) {
+          await typeCmd(steps[i].cmd);
+          await printOut(steps[i].out, steps[i].slow);
+          await sleep(500);
+        }
+        newLine();
+        await sleep(4500);
+      }
+    }
+    run();
+  })();
+</script>

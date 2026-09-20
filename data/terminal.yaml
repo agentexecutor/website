@@ -1,0 +1,62 @@
+steps:
+  - cmd: "cat task.yaml"
+    out:
+      - "apiVersion: ax.io/v1alpha1"
+      - "kind: Workspace"
+      - "metadata:"
+      - "  name: golang"
+      - "spec:"
+      - "  git:"
+      - "    - repo: https://github.com/golang/go.git"
+      - "      branch: \"my-fix\""
+      - "---"
+      - "apiVersion: ax.io/v1alpha1"
+      - "kind: Task"
+      - "metadata:"
+      - "  name: test"
+      - "spec:"
+      - "  workspaces:"
+      - "    - name: golang"
+      - "      goal: \"Ensure that Go tool chain is available and is built from source\""
+      - "  debug: true"
+    slow: [0, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+  - cmd: "ax apply -f task.yaml"
+    out:
+      - "workspace.ax.io/golang created"
+      - "task.ax.io/test created"
+  - cmd: "ax watch task test"
+    out:
+      - "Watching task default/test..."
+      - "[10:42:01] Phase: Pending    Actor: test               WorkerIP:"
+      - "[10:42:05] Phase: Running    Actor: test               WorkerIP: 10.20.3.67"
+      - "Task reached terminal phase \"Running\"."
+    slow: [0, 100, 4000, 150]
+  - cmd: "ax get tasks"
+    out:
+      - "NAME   ATESPACE   PHASE     ACTOR   WORKER-IP    AGE"
+      - "test   default    Running   test    10.20.3.67   5s"
+  - cmd: "ax ssh test -- ls /workspace"
+    out:
+      - "go"
+  - cmd: "ax ssh test -- ps -o pid,cmd"
+    out:
+      - "  PID CMD"
+      - "    1 /usr/local/bin/ax-task-runner"
+      - "   12 go build ./..."
+  - cmd: "ax ssh test -- touch notes.txt"
+    out: []
+  - cmd: "ax suspend task test"
+    out:
+      - "task.ax.io/test suspended"
+  - cmd: "ax resume task test"
+    out:
+      - "task.ax.io/test resumed"
+  - cmd: "ax ssh test -- ls notes.txt"
+    out:
+      - "notes.txt"
+  - cmd: "ax suspend task test"
+    out:
+      - "task.ax.io/test suspended"
+  - cmd: "ax delete task test"
+    out:
+      - "task.ax.io/test deleted"
