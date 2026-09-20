@@ -38,6 +38,8 @@ steps:
   - cmd: "ax ssh test -- ls /workspace"
     out:
       - "go"
+  - cmd: "ax ssh test -- cd /workspace/go && go build ./..."
+    out: []
   - cmd: "ax ssh test -- ps -o pid,cmd"
     out:
       - "  PID CMD"

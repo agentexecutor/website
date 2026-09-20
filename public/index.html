@@ -12,7 +12,7 @@
 <meta property="og:image" content="/axolotl.svg">
 <link rel="icon" href='./axolotl-mono.svg' type="image/svg+xml">
 <link rel="canonical" href="./">
-<link rel="stylesheet" href="./css/main.min.d629b8498a00999803d38c2031604bca1383172992253e908899054d19d38a95.css">
+<link rel="stylesheet" href="./css/main.min.768233a0b0fc7cee427a181c610f39bc39d29362b3e3a511695c29491aa38299.css">
 
 </head>
 <body class="home">
@@ -92,6 +92,7 @@
 <span class="out">test   default    Running   test    10.20.3.67   5s</span>
 <span class="prompt">$</span> <span class="cmd">ax ssh test -- ls /workspace</span>
 <span class="out">go</span>
+<span class="prompt">$</span> <span class="cmd">ax ssh test -- cd /workspace/go &amp;&amp; go build ./...</span>
 <span class="prompt">$</span> <span class="cmd">ax ssh test -- ps -o pid,cmd</span>
 <span class="out">  PID CMD</span>
 <span class="out">    1 /usr/local/bin/ax-task-runner</span>
@@ -116,7 +117,7 @@
     if (!el) return;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    var steps = [{"cmd":"cat task.yaml","out":["apiVersion: ax.io/v1alpha1","kind: Workspace","metadata:","  name: golang","spec:","  git:","    - repo: https://github.com/golang/go.git","      branch: \"my-fix\"","---","apiVersion: ax.io/v1alpha1","kind: Task","metadata:","  name: test","spec:","  workspaces:","    - name: golang","      goal: \"Ensure that Go tool chain is available and is built from source\"","  debug: true"],"slow":[0,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20]},{"cmd":"ax apply -f task.yaml","out":["workspace.ax.io/golang created","task.ax.io/test created"]},{"cmd":"ax watch task test","out":["Watching task default/test...","[10:42:01] Phase: Pending    Actor: test               WorkerIP:","[10:42:05] Phase: Running    Actor: test               WorkerIP: 10.20.3.67","Task reached terminal phase \"Running\"."],"slow":[0,100,4000,150]},{"cmd":"ax get tasks","out":["NAME   ATESPACE   PHASE     ACTOR   WORKER-IP    AGE","test   default    Running   test    10.20.3.67   5s"]},{"cmd":"ax ssh test -- ls /workspace","out":["go"]},{"cmd":"ax ssh test -- ps -o pid,cmd","out":["  PID CMD","    1 /usr/local/bin/ax-task-runner","   12 go build ./..."]},{"cmd":"ax ssh test -- touch notes.txt","out":[]},{"cmd":"ax suspend task test","out":["task.ax.io/test suspended"]},{"cmd":"ax resume task test","out":["task.ax.io/test resumed"]},{"cmd":"ax ssh test -- ls notes.txt","out":["notes.txt"]},{"cmd":"ax suspend task test","out":["task.ax.io/test suspended"]},{"cmd":"ax delete task test","out":["task.ax.io/test deleted"]}];
+    var steps = [{"cmd":"cat task.yaml","out":["apiVersion: ax.io/v1alpha1","kind: Workspace","metadata:","  name: golang","spec:","  git:","    - repo: https://github.com/golang/go.git","      branch: \"my-fix\"","---","apiVersion: ax.io/v1alpha1","kind: Task","metadata:","  name: test","spec:","  workspaces:","    - name: golang","      goal: \"Ensure that Go tool chain is available and is built from source\"","  debug: true"],"slow":[0,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20]},{"cmd":"ax apply -f task.yaml","out":["workspace.ax.io/golang created","task.ax.io/test created"]},{"cmd":"ax watch task test","out":["Watching task default/test...","[10:42:01] Phase: Pending    Actor: test               WorkerIP:","[10:42:05] Phase: Running    Actor: test               WorkerIP: 10.20.3.67","Task reached terminal phase \"Running\"."],"slow":[0,100,4000,150]},{"cmd":"ax get tasks","out":["NAME   ATESPACE   PHASE     ACTOR   WORKER-IP    AGE","test   default    Running   test    10.20.3.67   5s"]},{"cmd":"ax ssh test -- ls /workspace","out":["go"]},{"cmd":"ax ssh test -- cd /workspace/go \u0026\u0026 go build ./...","out":[]},{"cmd":"ax ssh test -- ps -o pid,cmd","out":["  PID CMD","    1 /usr/local/bin/ax-task-runner","   12 go build ./..."]},{"cmd":"ax ssh test -- touch notes.txt","out":[]},{"cmd":"ax suspend task test","out":["task.ax.io/test suspended"]},{"cmd":"ax resume task test","out":["task.ax.io/test resumed"]},{"cmd":"ax ssh test -- ls notes.txt","out":["notes.txt"]},{"cmd":"ax suspend task test","out":["task.ax.io/test suspended"]},{"cmd":"ax delete task test","out":["task.ax.io/test deleted"]}];
 
     var code = el.querySelector('code');
     var cursor;
@@ -282,9 +283,7 @@
   <div class="wrap">
     <p class="eyebrow">Generative platform</p>
     <h2>Generative features built into the platform.</h2>
-    <p class="lede narrow">AX provides features that allow you to use generative AI directly as part of the platform.
-      For example, if you want to set up a workspace just by explaining it in plain English, AX does it automatically
-      before your task starts.</p>
+    <p class="lede narrow">AX integrates generative AI directly into the platform. For example, if you want to set up a workspace just by explaining it in plain English, the environment is prepared automatically before your task starts.</p>
     <div class="generative-grid">
       <div class="window window-code window-minimal">
         <div class="window-bar"><span></span><span></span><span></span><em>task.yaml</em></div>
@@ -299,13 +298,17 @@
       </div>
       <div class="generative-list">
         <div class="generative-item">
-          <h3>Goal-driven workspaces</h3>
+          <h3>Generative workspaces</h3>
           <p>Describe what a ready environment looks like in plain English. AX hands that goal to an agent on first boot
             to install toolchains and verify dependencies.</p>
         </div>
         <div class="generative-item">
-          <h3>Perfect for researchers</h3>
-          <p>Spin up massive batches of reproducible sandboxes to collect generative trajectories, run reinforcement
+          <h3>Run anything and everything</h3>
+          <p>Interactive coding agents, long-running agent servers, Jupyter notebooks, headless browser testing, and custom tool runtimes—you name it.</p>
+        </div>
+        <div class="generative-item">
+          <h3>Perfect for research</h3>
+          <p>Spin up massive number of reproducible sandboxes to collect trajectories, run reinforcement
             learning loops, and evaluate coding agents at scale.</p>
         </div>
       </div>
@@ -317,10 +320,12 @@
   <div class="wrap">
     <p class="eyebrow">For builders &amp; researchers</p>
     <h2>Built to be the most friendly runtime for developers and researchers.</h2>
-    <p class="lede narrow">We want to make dealing with agentic infrastructure easier so you can focus on your work. AX is
+    <p class="lede narrow">We want to make dealing with agentic infrastructure easier so you can focus on your work. AX
+      is
       designed with an uncompromising focus on ergonomics, rapid iteration, and joyful workflows for both application
       developers and AI researchers.</p>
-    <p class="lede narrow">We aim to keep the runtime minimal and lightweight, while tastefully adding the essential features everyone needs to build, evaluate, and scale agents.</p>
+    <p class="lede narrow">We aim to keep the runtime minimal and lightweight, while tastefully adding the essential
+      features everyone needs to build, evaluate, and scale agents.</p>
   </div>
 </section>
 
