@@ -1,27 +1,49 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>/docs/quickstart/</loc>
-  </url><url>
-    <loc>/docs/concepts/</loc>
-  </url><url>
-    <loc>/docs/cli/</loc>
-  </url><url>
-    <loc>/docs/manifests/</loc>
-  </url><url>
-    <loc>/docs/sandbox/</loc>
-  </url><url>
-    <loc>/docs/runners/</loc>
-  </url><url>
-    <loc>/docs/networking/</loc>
-  </url><url>
-    <loc>/docs/architecture/</loc>
-  </url><url>
-    <loc>/docs/development/</loc>
-  </url><url>
-    <loc>/</loc>
-  </url><url>
-    <loc>/docs/</loc>
-  </url>
+  
+    <url>
+      <loc>/docs/quickstart/</loc>
+    </url>
+  
+    <url>
+      <loc>/docs/concepts/</loc>
+    </url>
+  
+    <url>
+      <loc>/docs/cli/</loc>
+    </url>
+  
+    <url>
+      <loc>/docs/manifests/</loc>
+    </url>
+  
+    <url>
+      <loc>/docs/sandbox/</loc>
+    </url>
+  
+    <url>
+      <loc>/docs/runners/</loc>
+    </url>
+  
+    <url>
+      <loc>/docs/networking/</loc>
+    </url>
+  
+    <url>
+      <loc>/docs/architecture/</loc>
+    </url>
+  
+    <url>
+      <loc>/docs/development/</loc>
+    </url>
+  
+    <url>
+      <loc>/</loc>
+    </url>
+  
+    <url>
+      <loc>/docs/</loc>
+    </url>
+  
 </urlset>

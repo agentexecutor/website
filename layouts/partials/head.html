@@ -3,6 +3,9 @@
 {{- $title := .Site.Title -}}
 {{- if not .IsHome }}{{ $title = printf "%s · %s" .Title .Site.Title }}{{ end -}}
 <title>{{ $title }}</title>
+{{- if or .Params.private .Params.hidden (eq .Type "demo") (eq .Section "demo") }}
+<meta name="robots" content="noindex, nofollow">
+{{- end }}
 {{- $desc := .Description | default .Site.Params.description -}}
 <meta name="description" content="{{ $desc }}">
 <meta name="theme-color" content="#F15B85" media="(prefers-color-scheme: light)">

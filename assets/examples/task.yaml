@@ -1,9 +1,19 @@
 # task.yaml
 apiVersion: ax.io/v1alpha1
+kind: Workspace
+metadata:
+  name: golang
+spec:
+  git:
+    - repo: https://github.com/golang/go.git
+      branch: "my-fix"
+---
+apiVersion: ax.io/v1alpha1
 kind: Task
 metadata:
   name: test
 spec:
-  image: ghcr.io/my-org/my-agent
-  command: ["python", "agent.py"]
+  workspaces:
+    - name: golang
+      goal: "Ensure that Go tool chain is available and is built from source"
   debug: true   # enable ssh'ing

@@ -12,7 +12,7 @@
 <meta property="og:image" content="/axolotl.svg">
 <link rel="icon" href='./axolotl-mono.svg' type="image/svg+xml">
 <link rel="canonical" href="./">
-<link rel="stylesheet" href="./css/main.min.81f0327e665ed3a33828d877a1bac3be3c4cba4c70f55742120985280d1628ae.css">
+<link rel="stylesheet" href="./css/main.min.8732cbf649c4e6a21dcd8e3951a59009b4c99211e3ab13e33eb777eb0ab680d9.css">
 
 </head>
 <body class="home">
@@ -54,28 +54,63 @@
         <div class="window-bar"><span></span><span></span><span></span><em>task.yaml</em></div>
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># task.yaml</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">ax.io/v1alpha1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Workspace</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">golang</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">git</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l">https://github.com/golang/go.git</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;my-fix&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">ax.io/v1alpha1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Task</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">test</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">ghcr.io/my-org/my-agent</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;python&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;agent.py&#34;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">workspaces</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">golang</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">goal</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Ensure that Go tool chain is available and is built from source&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">   </span><span class="c"># enable ssh&#39;ing</span><span class="w">
 </span></span></span></code></pre></div>
       </div>
       <div class="window window-term">
         <div class="window-bar"><span></span><span></span><span></span><em>shell</em></div>
-        <pre class="term" id="term" aria-live="off"><code><span class="prompt">$</span> <span class="cmd">ax apply -f task.yaml</span>
+        <pre class="term" id="term" aria-live="off"><code><span class="prompt">$</span> <span class="cmd">cat task.yaml</span>
+<span class="out">apiVersion: ax.io/v1alpha1</span>
+<span class="out">kind: Workspace</span>
+<span class="out">metadata:</span>
+<span class="out">  name: golang</span>
+<span class="out">spec:</span>
+<span class="out">  git:</span>
+<span class="out">    - repo: https://github.com/golang/go.git</span>
+<span class="out">      branch: "my-fix"</span>
+<span class="out">---</span>
+<span class="out">apiVersion: ax.io/v1alpha1</span>
+<span class="out">kind: Task</span>
+<span class="out">metadata:</span>
+<span class="out">  name: test</span>
+<span class="out">spec:</span>
+<span class="out">  workspaces:</span>
+<span class="out">    - name: golang</span>
+<span class="out">      goal: "Ensure that Go tool chain is available and is built from source"</span>
+<span class="out">  debug: true</span>
+<span class="prompt">$</span> <span class="cmd">ax apply -f task.yaml</span>
+<span class="out">workspace.ax.io/golang created</span>
 <span class="out">task.ax.io/test created</span>
 <span class="prompt">$</span> <span class="cmd">ax watch task test</span>
 <span class="out">Watching task default/test...</span>
-<span class="out">[10:42:01.100] Phase: Pending    Actor: test  WorkerIP:</span>
-<span class="out">[10:42:01.600] Phase: Running    Actor: test  WorkerIP: 10.20.3.67</span>
+<span class="out">[10:42:01] Phase: Pending    Actor: test               WorkerIP:</span>
+<span class="out">[10:42:05] Phase: Running    Actor: test               WorkerIP: 10.20.3.67</span>
 <span class="out">Task reached terminal phase "Running".</span>
+<span class="prompt">$</span> <span class="cmd">ax get tasks</span>
+<span class="out">NAME   ATESPACE   PHASE     ACTOR   WORKER-IP    AGE</span>
+<span class="out">test   default    Running   test    10.20.3.67   5s</span>
+<span class="prompt">$</span> <span class="cmd">ax ssh test -- ls /workspace</span>
+<span class="out">go</span>
 <span class="prompt">$</span> <span class="cmd">ax ssh test -- ps -o pid,cmd</span>
 <span class="out">  PID CMD</span>
 <span class="out">    1 /usr/local/bin/ax-task-runner</span>
-<span class="out">   12 python agent.py</span>
+<span class="out">   12 go build ./...</span>
 <span class="prompt">$</span> <span class="cmd">ax ssh test -- touch notes.txt</span>
 <span class="prompt">$</span> <span class="cmd">ax suspend task test</span>
 <span class="out">task.ax.io/test suspended</span>
@@ -83,6 +118,8 @@
 <span class="out">task.ax.io/test resumed</span>
 <span class="prompt">$</span> <span class="cmd">ax ssh test -- ls notes.txt</span>
 <span class="out">notes.txt</span>
+<span class="prompt">$</span> <span class="cmd">ax suspend task test</span>
+<span class="out">task.ax.io/test suspended</span>
 <span class="prompt">$</span> <span class="cmd">ax delete task test</span>
 <span class="out">task.ax.io/test deleted</span>
 </code></pre>
@@ -181,20 +218,60 @@
 
     var steps = [
       {
+        cmd: 'cat task.yaml',
+        out: [
+          'apiVersion: ax.io/v1alpha1',
+          'kind: Workspace',
+          'metadata:',
+          '  name: golang',
+          'spec:',
+          '  git:',
+          '    - repo: https://github.com/golang/go.git',
+          '      branch: "my-fix"',
+          '---',
+          'apiVersion: ax.io/v1alpha1',
+          'kind: Task',
+          'metadata:',
+          '  name: test',
+          'spec:',
+          '  workspaces:',
+          '    - name: golang',
+          '      goal: "Ensure that Go tool chain is available and is built from source"',
+          '  debug: true'
+        ],
+        slow: [0, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+      },
+      {
         cmd: 'ax apply -f task.yaml',
-        out: ['task.ax.io/test created']
+        out: [
+          'workspace.ax.io/golang created',
+          'task.ax.io/test created'
+        ]
       },
       {
         cmd: 'ax watch task test',
-        out: ['Watching task default/test...',
-          '[10:42:01.100] Phase: Pending    Actor: test  WorkerIP:',
-          '[10:42:01.600] Phase: Running    Actor: test  WorkerIP: 10.20.3.67',
-          'Task reached terminal phase "Running".'],
-        slow: [0, 400, 500, 200]
+        out: [
+          'Watching task default/test...',
+          '[10:42:01] Phase: Pending    Actor: test               WorkerIP:',
+          '[10:42:05] Phase: Running    Actor: test               WorkerIP: 10.20.3.67',
+          'Task reached terminal phase "Running".'
+        ],
+        slow: [0, 100, 4000, 150]
+      },
+      {
+        cmd: 'ax get tasks',
+        out: [
+          'NAME   ATESPACE   PHASE     ACTOR   WORKER-IP    AGE',
+          'test   default    Running   test    10.20.3.67   5s'
+        ]
+      },
+      {
+        cmd: 'ax ssh test -- ls /workspace',
+        out: ['go']
       },
       {
         cmd: 'ax ssh test -- ps -o pid,cmd',
-        out: ['  PID CMD', '    1 /usr/local/bin/ax-task-runner', '   12 python agent.py']
+        out: ['  PID CMD', '    1 /usr/local/bin/ax-task-runner', '   12 go build ./...']
       },
       {
         cmd: 'ax ssh test -- touch notes.txt',
@@ -211,6 +288,10 @@
       {
         cmd: 'ax ssh test -- ls notes.txt',
         out: ['notes.txt']
+      },
+      {
+        cmd: 'ax suspend task test',
+        out: ['task.ax.io/test suspended']
       },
       {
         cmd: 'ax delete task test',

@@ -1,30 +1,9 @@
 {{ define "main" }}
-{{- $yaml := (resources.Get "examples/task.yaml").Content -}}
-
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <img class="hero-logo" src='{{ "axolotl.svg" | relURL }}' alt="AX's pink axolotl mascot" width="210" height="140">
-      <h1>Declare an agentic task. <span class="accent">AX runs it at scale.</span></h1>
-      <p class="lede">AX sandboxes your task, wires up its workspace, fences its network, and helps you run billions of
-        them per cluster. Either use a single task per agent, or compose as many as your agent needs.</p>
-      <div class="cta">
-        <a class="btn btn-primary" href="{{ .Site.Params.github }}#quick-start" rel="noopener">Get started</a>
-        <a class="btn btn-ghost" href="{{ .Site.Params.github }}" rel="noopener"><svg width="18" height="18"
-            viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-          </svg>View on GitHub</a>
-      </div>
-    </div>
-    <div class="hero-code">
-      <div class="window">
-        <div class="window-bar"><span></span><span></span><span></span><em>task.yaml</em></div>
-        {{ highlight $yaml "yaml" "" }}
-      </div>
-      <div class="window window-term">
-        <div class="window-bar"><span></span><span></span><span></span><em>shell</em></div>
-        <pre class="term" id="term" aria-live="off"><code><span class="prompt">$</span> <span class="cmd">cat task.yaml</span>
+<section class="hero hero-demo-page">
+  <div class="wrap demo-container">
+    <div class="window window-term window-demo">
+      <div class="window-bar"><span></span><span></span><span></span><em>shell</em></div>
+      <pre class="term" id="term" aria-live="off"><code><span class="prompt">$</span> <span class="cmd">cat task.yaml</span>
 <span class="out">apiVersion: ax.io/v1alpha1</span>
 <span class="out">kind: Workspace</span>
 <span class="out">metadata:</span>
@@ -72,90 +51,7 @@
 <span class="prompt">$</span> <span class="cmd">ax delete task test</span>
 <span class="out">task.ax.io/test deleted</span>
 </code></pre>
-      </div>
     </div>
-  </div>
-</section>
-
-<section class="section why">
-  <div class="wrap">
-    <p class="eyebrow">Why AX</p>
-    <h2>Agents are a new kind of workload.</h2>
-    <p class="lede narrow">They are neither stateless microservices nor run-to-completion batch jobs. They accumulate
-      state, need strict isolation, call out to model APIs and tool servers, and can burn money in a loop if nobody is
-      watching. AX gives you four small primitives that handle all of that declaratively.</p>
-
-    <div class="feature-grid">
-      <a class="feature task" href="{{ .Site.Params.github }}/blob/main/docs/concepts.md#task" rel="noopener">
-        <span class="kind">Task</span>
-        <h3>Isolated execution</h3>
-        <p>Run untrusted agent code in a sandbox with CPU and memory limits. Cheap to create, suspend, and throw away.
-        </p>
-      </a>
-      <a class="feature workspace" href="{{ .Site.Params.github }}/blob/main/docs/concepts.md#workspace" rel="noopener">
-        <span class="kind">Workspace</span>
-        <h3>Easy workspace setup</h3>
-        <p>List the Git repos, MCP servers, and skills an agent needs, or just describe the goal. AX sets it all up in
-          every sandbox before the task starts.</p>
-      </a>
-      <a class="feature gateway" href="{{ .Site.Params.github }}/blob/main/docs/concepts.md#gateway" rel="noopener">
-        <span class="kind">Gateway</span>
-        <h3>Network policies</h3>
-        <p>Define and quickly manage network policies. Lock traffic down to an explicit allowlist of hosts and
-          ports, inject credentials to the incoming requests.</p>
-      </a>
-      <a class="feature model" href="{{ .Site.Params.github }}/blob/main/docs/concepts.md#model" rel="noopener">
-        <span class="kind">Model</span>
-        <h3>One place for config</h3>
-        <p>Configure models, model parameters, and secrets in one place. Rotate a key or pin a new model version with
-          one apply.</p>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<section class="section flow">
-  <div class="wrap">
-    <p class="eyebrow">How it works</p>
-    <h2>Built for billions of tasks, not thousands.</h2>
-    <p class="lede narrow">AX runs on top of <a href="{{ .Site.Params.substrate }}" rel="noopener">Agent Substrate</a>,
-      a compute runtime designed from the ground up for massive density and fast stateful actor lifecycles.</p>
-    <div class="flow-grid">
-      <div class="flow-card">
-        <strong>Billions of tasks</strong>
-        <p>Every task runs as an ultra-lightweight actor rather than a heavy container pod, allowing you to scale to
-          billions of concurrent agent sessions per cluster without orchestrator limits.</p>
-      </div>
-      <div class="flow-card">
-        <strong>Sub-second lifecycle</strong>
-        <p>Idle agents waiting on external tool calls or human responses are checkpointed, suspended, and brought back
-          in under a second with zero cold-start delay.</p>
-      </div>
-      <div class="flow-card">
-        <strong>Dense multiplexing</strong>
-        <p>Dozens of tasks share worker resources, turning idle waiting time into spare compute capacity so you only pay
-          when agents are actively thinking and running code.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section about">
-  <div class="wrap">
-    <p class="eyebrow">About</p>
-    <h2>Research meets production at Google.</h2>
-    <p class="lede narrow">AX was born at Google when agentic runtime systems research met frontier compute. Over years
-      of building and operating agentic execution engines, teams across Google recognized that agentic workloads
-      represent an entirely new computing paradigm: stateful, bursty, long-running actors that compute intensely for a
-      minute and then wait for tool responses or human approval. Traditional orchestrators built for stateless
-      microservices or predictable batch jobs become cost-prohibitive when keeping idle sandboxes running, yet lack
-      native support for sub-second suspend and resume.</p>
-    <p class="lede narrow">Drawing on agentic runtime research from Google DeepMind alongside deep experience in
-      large-scale isolation, resumption, and scheduling, AX was architected as an open, declarative control plane
-      purpose-built for agent execution. It abstracts tasks, workspaces, network policies, and models into core
-      primitives so developers and researchers can run massive fleets of agents without reinventing the underlying
-      infrastructure.</p>
   </div>
 </section>
 

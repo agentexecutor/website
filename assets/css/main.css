@@ -421,6 +421,46 @@ pre code { background: none; padding: 0; font-size: inherit; color: inherit; }
   height: 12em;   /* fixed; the transcript scrolls inside the window */
   font-size: .8rem; white-space: pre; overflow: auto; scrollbar-width: thin; scrollbar-color: var(--code-border) transparent;
 }
+.window-term.window-term-lg .term {
+  height: 24em;
+  font-size: .85rem;
+}
+.hero-demo-page {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 4rem) 0;
+}
+.demo-container {
+  max-width: 1180px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.window-demo {
+  width: 100%;
+  box-shadow: 0 32px 70px -15px rgba(67, 43, 65, .5), 0 0 0 1px var(--code-border);
+  border-radius: 18px;
+}
+.window-demo .window-bar {
+  padding: .85rem 1.25rem;
+}
+.window-demo .window-bar span {
+  width: 12px;
+  height: 12px;
+}
+.window-demo .window-bar em {
+  font-size: .85rem;
+}
+.window-demo .term {
+  height: 34em;
+  font-size: 1.12rem;
+  line-height: 1.65;
+  padding: 1.75rem 2.25rem;
+}
 .term .prompt { color: var(--aqua-soft); user-select: none; }
 .term .cmd { color: #ffffff; font-weight: 600; }
 .term .out { color: #d9c3d3; }
