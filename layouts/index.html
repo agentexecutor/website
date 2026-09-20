@@ -68,12 +68,13 @@
     <div class="flow-grid">
       <div class="flow-card">
         <strong>Billions of tasks</strong>
-        <p>Every task runs as an ultra-lightweight actor rather than a heavy container pod, allowing you to scale to
+        <p>Every task runs as a lightweight actor, allowing you to scale to
           billions of concurrent agent sessions per cluster without orchestrator limits.</p>
       </div>
       <div class="flow-card">
-        <strong>Sub-second lifecycle</strong>
-        <p>Idle agents waiting on external tool calls or human responses are checkpointed, suspended, and brought back
+        <strong>Sub-second resumption</strong>
+        <p>Idle agents waiting on model responses, external tool calls, or human responses are checkpointed, suspended,
+          and brought back
           in under a second with zero cold-start delay.</p>
       </div>
       <div class="flow-card">
@@ -85,21 +86,58 @@
   </div>
 </section>
 
+<section class="section generative">
+  <div class="wrap">
+    <p class="eyebrow">Generative platform</p>
+    <h2>Generative features built into the platform.</h2>
+    <p class="lede narrow">AX provides features that allow you to use generative AI directly as part of the platform.
+      For example, if you want to set up a workspace just by explaining it in plain English, AX does it automatically
+      before your task starts.</p>
+    <div class="generative-grid">
+      <div class="window window-code window-minimal">
+        <div class="window-bar"><span></span><span></span><span></span><em>task.yaml</em></div>
+        <pre><code><span class="chroma"><span class="nt">apiVersion</span><span class="p">:</span> <span class="s">ax.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="s">Task</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="s">data-analysis</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">workspaces</span><span class="p">:</span>
+    - <span class="nt">name</span><span class="p">:</span> <span class="s">python-env</span>
+      <span class="nt">goal</span><span class="p">:</span> <span class="s">"Set up a Python 3 development environment"</span></span></code></pre>
+      </div>
+      <div class="generative-list">
+        <div class="generative-item">
+          <h3>Goal-driven workspaces</h3>
+          <p>Describe what a ready environment looks like in plain English. AX hands that goal to an agent on first boot
+            to install toolchains and verify dependencies.</p>
+        </div>
+        <div class="generative-item">
+          <h3>Perfect for research</h3>
+          <p>Spin up massive batches of reproducible sandboxes to collect generative trajectories, run reinforcement
+            learning loops, and evaluate coding agents at scale.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section about">
   <div class="wrap">
     <p class="eyebrow">About</p>
-    <h2>Research meets production at Google.</h2>
+    <h2>Born from research, built for production.</h2>
     <p class="lede narrow">AX was born at Google when agentic runtime systems research met frontier compute. Over years
       of building and operating agentic execution engines, teams across Google recognized that agentic workloads
       represent an entirely new computing paradigm: stateful, bursty, long-running actors that compute intensely for a
-      minute and then wait for tool responses or human approval. Traditional orchestrators built for stateless
+      minute and then wait for model responses, tool responses, or human approval. Traditional orchestrators built for
+      stateless
       microservices or predictable batch jobs become cost-prohibitive when keeping idle sandboxes running, yet lack
       native support for sub-second suspend and resume.</p>
     <p class="lede narrow">Drawing on agentic runtime research from Google DeepMind alongside deep experience in
-      large-scale isolation, resumption, and scheduling, AX was architected as an open, declarative control plane
+      large-scale isolation, resumption, and scheduling, AX is being built as an open, declarative control plane
       purpose-built for agent execution. It abstracts tasks, workspaces, network policies, and models into core
       primitives so developers and researchers can run massive fleets of agents without reinventing the underlying
-      infrastructure.</p>
+      infrastructure. This project heavily relies on <a href="{{ .Site.Params.substrate }}" rel="noopener">Agent
+        Substrate</a> but provides agentic abstractions and generative runtime components.</p>
   </div>
 </section>
 {{ end }}
