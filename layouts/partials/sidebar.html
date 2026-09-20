@@ -1,0 +1,14 @@
+{{- $section := .Site.GetPage "docs" -}}
+{{- $current := .RelPermalink -}}
+<nav class="side-nav" aria-label="Documentation">
+  <a href="{{ $section.RelPermalink }}" {{ if eq $current $section.RelPermalink }}class="active" aria-current="page"{{ end }}>Overview</a>
+  {{- range $group := .Site.Params.docGroups }}
+  {{- $pages := where $section.RegularPages ".Params.group" $group }}
+  {{- if $pages }}
+  <h4>{{ $group }}</h4>
+  {{- range $pages.ByWeight }}
+  <a href="{{ .RelPermalink }}" {{ if eq $current .RelPermalink }}class="active" aria-current="page"{{ end }}>{{ .Title }}</a>
+  {{- end }}
+  {{- end }}
+  {{- end }}
+</nav>

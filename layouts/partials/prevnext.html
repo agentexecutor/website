@@ -1,0 +1,9 @@
+{{- $pages := .CurrentSection.RegularPages.ByWeight -}}
+{{- $prev := $pages.Next . -}}
+{{- $next := $pages.Prev . -}}
+{{- if or $prev $next }}
+<nav class="prevnext" aria-label="Pagination">
+  {{ with $prev }}<a class="prev" href="{{ .RelPermalink }}"><small>Previous</small><span>{{ .Title }}</span></a>{{ else }}<span></span>{{ end }}
+  {{ with $next }}<a class="next" href="{{ .RelPermalink }}"><small>Next</small><span>{{ .Title }}</span></a>{{ end }}
+</nav>
+{{- end }}

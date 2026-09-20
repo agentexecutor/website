@@ -1,48 +1,16 @@
-<!DOCTYPE html>
-<html lang="en-us">
-<head>
-	<meta name="generator" content="Hugo 0.106.0">
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1"><title>AX</title><meta name="description" content="Declare an agentic task in YAML. AX sandboxes it, wires up its workspace, fences its network, and helps running it at scale.">
-<meta name="theme-color" content="#F15B85" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#432B41" media="(prefers-color-scheme: dark)">
-<meta property="og:title" content="AX">
-<meta property="og:description" content="Declare an agentic task in YAML. AX sandboxes it, wires up its workspace, fences its network, and helps running it at scale.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="/axolotl.svg">
-<link rel="icon" href='./axolotl-mono.svg' type="image/svg+xml">
-<link rel="canonical" href="./">
-<link rel="stylesheet" href="./css/main.min.81f0327e665ed3a33828d877a1bac3be3c4cba4c70f55742120985280d1628ae.css">
+{{ define "main" }}
+{{- $yaml := (resources.Get "examples/task.yaml").Content -}}
 
-</head>
-<body class="home">
-  <header class="site-header">
-  <div class="wrap header-inner">
-    <a class="brand" href="./" aria-label="AX home">
-      <img src="./axolotl.svg" alt="" width="45" height="30">
-      <span>AX</span>
-    </a>
-    <nav class="site-nav" aria-label="Main">
-      <a href="https://github.com/google/ax"
-         rel="noopener"
-         ><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg><span>GitHub</span>
-      </a>
-      
-    </nav>
-  </div>
-</header>
-
-  <main id="main">
-    <section class="hero">
+<section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <img class="hero-logo" src='./axolotl.svg' alt="AX's pink axolotl mascot" width="210" height="140">
+      <img class="hero-logo" src='{{ "axolotl.svg" | relURL }}' alt="AX's pink axolotl mascot" width="210" height="140">
       <h1>Declare an agentic task. <span class="accent">AX runs it at scale.</span></h1>
       <p class="lede">AX sandboxes your task, wires up its workspace, fences its network, and helps you run billions of
         them per cluster. Either use a single task per agent, or compose as many as your agent needs.</p>
       <div class="cta">
-        <a class="btn btn-primary" href="https://github.com/google/ax#quick-start" rel="noopener">Get started</a>
-        <a class="btn btn-ghost" href="https://github.com/google/ax" rel="noopener"><svg width="18" height="18"
+        <a class="btn btn-primary" href="{{ .Site.Params.github }}#quick-start" rel="noopener">Get started</a>
+        <a class="btn btn-ghost" href="{{ .Site.Params.github }}" rel="noopener"><svg width="18" height="18"
             viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path fill-rule="evenodd" clip-rule="evenodd"
               d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
@@ -52,16 +20,7 @@
     <div class="hero-code">
       <div class="window">
         <div class="window-bar"><span></span><span></span><span></span><em>task.yaml</em></div>
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># task.yaml</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">ax.io/v1alpha1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Task</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">test</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">ghcr.io/my-org/my-agent</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;python&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;agent.py&#34;</span><span class="p">]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">   </span><span class="c"># enable ssh&#39;ing</span><span class="w">
-</span></span></span></code></pre></div>
+        {{ highlight $yaml "yaml" "" }}
       </div>
       <div class="window window-term">
         <div class="window-bar"><span></span><span></span><span></span><em>shell</em></div>
@@ -100,25 +59,25 @@
       watching. AX gives you four small primitives that handle all of that declaratively.</p>
 
     <div class="feature-grid">
-      <a class="feature task" href="https://github.com/google/ax/blob/main/docs/concepts.md#task" rel="noopener">
+      <a class="feature task" href="{{ .Site.Params.github }}/blob/main/docs/concepts.md#task" rel="noopener">
         <span class="kind">Task</span>
         <h3>Isolated execution</h3>
         <p>Run untrusted agent code in a sandbox with CPU and memory limits. Cheap to create, suspend, and throw away.
         </p>
       </a>
-      <a class="feature workspace" href="https://github.com/google/ax/blob/main/docs/concepts.md#workspace" rel="noopener">
+      <a class="feature workspace" href="{{ .Site.Params.github }}/blob/main/docs/concepts.md#workspace" rel="noopener">
         <span class="kind">Workspace</span>
         <h3>Easy workspace setup</h3>
         <p>List the Git repos, MCP servers, and skills an agent needs, or just describe the goal. AX sets it all up in
           every sandbox before the task starts.</p>
       </a>
-      <a class="feature gateway" href="https://github.com/google/ax/blob/main/docs/concepts.md#gateway" rel="noopener">
+      <a class="feature gateway" href="{{ .Site.Params.github }}/blob/main/docs/concepts.md#gateway" rel="noopener">
         <span class="kind">Gateway</span>
         <h3>Network policies</h3>
         <p>Define and quickly manage network policies. Lock traffic down to an explicit allowlist of hosts and
           ports, inject credentials to the incoming requests.</p>
       </a>
-      <a class="feature model" href="https://github.com/google/ax/blob/main/docs/concepts.md#model" rel="noopener">
+      <a class="feature model" href="{{ .Site.Params.github }}/blob/main/docs/concepts.md#model" rel="noopener">
         <span class="kind">Model</span>
         <h3>One place for config</h3>
         <p>Configure models, model parameters, and secrets in one place. Rotate a key or pin a new model version with
@@ -133,7 +92,7 @@
   <div class="wrap">
     <p class="eyebrow">How it works</p>
     <h2>Built for billions of tasks, not thousands.</h2>
-    <p class="lede narrow">AX runs on top of <a href="https://github.com/agent-substrate/substrate" rel="noopener">Agent Substrate</a>,
+    <p class="lede narrow">AX runs on top of <a href="{{ .Site.Params.substrate }}" rel="noopener">Agent Substrate</a>,
       a compute runtime designed from the ground up for massive density and fast stateful actor lifecycles.</p>
     <div class="flow-grid">
       <div class="flow-card">
@@ -271,19 +230,4 @@
     run();
   })();
 </script>
-
-  </main>
-  <footer class="site-footer" id="footer">
-  <div class="wrap footer-inner">
-    <div class="footer-brand">
-      <img src="./axolotl-mono.svg" alt="" width="30" height="20">
-      <span>AX</span>
-    </div>
-    <p class="footer-links">
-      <a href="https://github.com/google/ax" rel="noopener">GitHub</a>
-      <a href="https://github.com/google/ax/blob/main/LICENSE" rel="noopener">Apache 2.0 License</a>
-    </p>
-  </div>
-</footer>
-</body>
-</html>
+{{ end }}

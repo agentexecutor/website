@@ -1,0 +1,20 @@
+{{ define "main" }}
+<div class="wrap docs-grid">
+  <aside class="sidebar">{{ partial "sidebar.html" . }}</aside>
+  <article class="doc prose">
+    <header class="doc-header">
+      {{ with .Params.group }}<p class="eyebrow">{{ . }}</p>{{ end }}
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
+    </header>
+    {{ .Content }}
+    {{ partial "prevnext.html" . }}
+  </article>
+  <aside class="toc">
+    {{ if in .TableOfContents "<li" }}
+    <h4>On this page</h4>
+    {{ .TableOfContents }}
+    {{ end }}
+  </aside>
+</div>
+{{ end }}

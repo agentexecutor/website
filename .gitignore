@@ -1,2 +1,6 @@
-.firebase/hosting.cHVibGlj.cache
+public/
+resources/_gen/
+.hugo_build.lock
+.firebase/
 .DS_Store
+

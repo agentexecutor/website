@@ -1,0 +1,17 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{- $title := .Site.Title -}}
+{{- if not .IsHome }}{{ $title = printf "%s · %s" .Title .Site.Title }}{{ end -}}
+<title>{{ $title }}</title>
+{{- $desc := .Description | default .Site.Params.description -}}
+<meta name="description" content="{{ $desc }}">
+<meta name="theme-color" content="#F15B85" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#432B41" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:type" content="website">
+<meta property="og:image" content="{{ "axolotl.svg" | absURL }}">
+<link rel="icon" href='{{ "axolotl-mono.svg" | relURL }}' type="image/svg+xml">
+<link rel="canonical" href="{{ .Permalink }}">
+{{- $css := resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">

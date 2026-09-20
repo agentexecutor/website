@@ -1,0 +1,27 @@
+{{ define "main" }}
+<div class="wrap docs-grid docs-index">
+  <aside class="sidebar">{{ partial "sidebar.html" . }}</aside>
+  <article class="doc prose">
+    <header class="doc-header">
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
+    </header>
+    {{ .Content }}
+    {{ range $group := .Site.Params.docGroups }}
+    {{- $pages := where $.RegularPages ".Params.group" $group }}
+    {{- if $pages }}
+    <h2>{{ $group }}</h2>
+    <div class="card-grid">
+      {{ range $pages.ByWeight }}
+      <a class="card" href="{{ .RelPermalink }}">
+        <h3>{{ .Title }}</h3>
+        <p>{{ .Description }}</p>
+      </a>
+      {{ end }}
+    </div>
+    {{- end }}
+    {{ end }}
+  </article>
+  <aside class="toc"></aside>
+</div>
+{{ end }}

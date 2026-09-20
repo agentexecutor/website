@@ -1,41 +1,39 @@
-baseURL = 'https://agentexecutor.io/'
-languageCode = 'en-us'
-title = 'Agent Executor (AX)'
-theme = 'ax'
+baseURL = "/"
+languageCode = "en-us"
+title = "AX"
+enableRobotsTXT = true
+relativeURLs = true   # emit relative asset paths so public/ works from disk or under any subpath
+disableKinds = ["taxonomy", "term"]
 
 [params]
-  description = "A distributed agent runtime designed for reliability, customizability, and efficiency."
-  tagline     = "A distributed agent runtime designed for reliability, customizability, and efficiency."
-  status      = "Early Preview"
-  githubURL        = "https://github.com/google/ax"
-  footer      = "AX is an open source project from Google. <a href=\"https://github.com/google/ax\">github.com/google/ax</a>"
+  description = "Declare an agentic task in YAML. AX sandboxes it, wires up its workspace, fences its network, and helps running it at scale."
+  github = "https://github.com/google/ax"
+  substrate = "https://github.com/agent-substrate/substrate"
+  docGroups = ["Start here", "Guides", "Internals"]
 
-[[params.features]]
-  title       = "Resumable and autonomous"
-  description = "Automatic recovery and resumption from failures, even across complex distributed deployments."
-  icon        = "shield"
+[menu]
+  # [[menu.main]]
+  #   name = "Docs"
+  #   url = "/docs/"
+  #   weight = 10
+  [[menu.main]]
+    name = "GitHub"
+    url = "https://github.com/google/ax"
+    weight = 20
 
-[[params.features]]
-  title       = "Customizable"
-  description = "The runtime is fully customizable with tools, skills, and purpose-built agents for any domain or workflow."
-  icon        = "wrench"
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    noClasses = false
+    lineNos = false
+    guessSyntax = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+    ordered = false
 
-[[params.features]]
-  title       = "Kubernetes-native"
-  description = "Designed to run on <a href=\"https://ate.dev\">Agent Substrate</a> with first-class Kubernetes support."
-  icon        = "server"
-
-[[params.features]]
-  title       = "Model and harness agnostic"
-  description = "Bring your own LLM and planning logic. AX handles execution, durability, and coordination underneath."
-  icon        = "puzzle"
-
-[[params.features]]
-  title       = "Open protocols"
-  description = "Native support for MCP, A2A, and other agentic protocols. AX agents can interoperate with tools and agents across the ecosystem."
-  icon        = "arrows"
-
-[[params.features]]
-  title       = "Auditing and policy"
-  description = "Full audit trail, observability hooks, and trajectory collection for every execution."
-  icon        = "lock"
+[outputs]
+  home = ["HTML"]
+  section = ["HTML"]
+  page = ["HTML"]
