@@ -230,10 +230,10 @@ pre code { background: none; padding: 0; font-size: inherit; color: inherit; }
   border-bottom: 1px solid var(--border);
 }
 .hero-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 3rem; align-items: center; }
-.hero-layout { display: flex; align-items: flex-start; gap: 1.75rem; }
-.hero-logo { flex-shrink: 0; width: auto; height: 210px; margin: 0.25rem 0 0 0; filter: drop-shadow(0 12px 24px rgba(241, 91, 133, .3)); }
+.hero-layout { display: flex; align-items: center; gap: 1.75rem; margin-bottom: 1.25rem; }
+.hero-logo { flex-shrink: 0; width: auto; height: 190px; filter: drop-shadow(0 12px 24px rgba(241, 91, 133, .3)); }
 .hero-text { flex: 1; min-width: 0; }
-.hero h1 { margin-bottom: 1rem; }
+.hero h1 { font-size: 2.15rem; line-height: 1.25; margin-bottom: 0; }
 .hero .lede { font-size: 1.2rem; max-width: 56ch; }
 .hero .lede code { font-size: .95em; }
 .cta { display: flex; flex-wrap: wrap; gap: .75rem; margin: 1.75rem 0 0; }
