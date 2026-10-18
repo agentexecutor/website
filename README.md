@@ -22,7 +22,7 @@ Requires Hugo extended 0.106 or newer.
 | `layouts/index.html` | Landing page |
 | `layouts/docs/` | Docs section with sidebar, table of contents, prev/next |
 | `assets/css/main.css` | Styles. Palette comes from the axolotl mascot |
-| `static/axolotl*.svg` | Logo files copied from the AX repo |
+| `static/*.svg` | Logo files (including `axel.svg`) copied from the AX repo |
 
 ## Palette
 
