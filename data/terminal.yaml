@@ -24,13 +24,19 @@ steps:
     out:
       - "workspace.ax.io/golang created"
       - "task.ax.io/test created"
-  - cmd: "ax watch task test"
+  - cmd: "ax describe task test"
     out:
-      - "Watching task default/test..."
-      - "[10:42:01] Phase: Pending    Actor: test               WorkerIP:"
-      - "[10:42:05] Phase: Running    Actor: test               WorkerIP: 10.20.3.67"
-      - "Task reached terminal phase \"Running\"."
-    slow: [0, 100, 4000, 150]
+      - "Name:         test"
+      - "Atespace:     default"
+      - "Phase:        Running"
+      - "Actor:        test"
+      - "Worker IP:    10.20.3.67"
+      - "Workspace:    golang  path=/workspace"
+      - ""
+      - "Conditions:"
+      - "  TYPE            STATUS  REASON         MESSAGE"
+      - "  Ready           True    TaskRunning"
+      - "  WorkspaceReady  True    SetupComplete"
   - cmd: "ax get tasks"
     out:
       - "NAME   ATESPACE   PHASE     ACTOR   WORKER-IP    AGE"

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-	<meta name="generator" content="Hugo 0.106.0">
+	<meta name="generator" content="Hugo 0.140.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"><title>AX</title><meta name="description" content="Declare an agentic task in YAML. AX sandboxes it, wires up its workspace, fences its network, and helps running it at scale.">
 <meta name="theme-color" content="#F15B85" media="(prefers-color-scheme: light)">
@@ -9,9 +9,9 @@
 <meta property="og:title" content="AX">
 <meta property="og:description" content="Declare an agentic task in YAML. AX sandboxes it, wires up its workspace, fences its network, and helps running it at scale.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="/axel.svg">
+<meta property="og:image" content="//localhost:1313/axel.svg">
 <link rel="icon" href='./axolotl-mono.svg' type="image/svg+xml">
-<link rel="canonical" href="./">
+<link rel="canonical" href="//localhost:1313/">
 <link rel="stylesheet" href="./css/main.min.5946d2ee20618054f49ff9d8724524d9738dc04c384da7e644a6334f036c6bd8.css">
 
 </head>
@@ -86,11 +86,18 @@
 <span class="prompt">$</span> <span class="cmd">ax apply -f task.yaml</span>
 <span class="out">workspace.ax.io/golang created</span>
 <span class="out">task.ax.io/test created</span>
-<span class="prompt">$</span> <span class="cmd">ax watch task test</span>
-<span class="out">Watching task default/test...</span>
-<span class="out">[10:42:01] Phase: Pending    Actor: test               WorkerIP:</span>
-<span class="out">[10:42:05] Phase: Running    Actor: test               WorkerIP: 10.20.3.67</span>
-<span class="out">Task reached terminal phase &#34;Running&#34;.</span>
+<span class="prompt">$</span> <span class="cmd">ax describe task test</span>
+<span class="out">Name:         test</span>
+<span class="out">Atespace:     default</span>
+<span class="out">Phase:        Running</span>
+<span class="out">Actor:        test</span>
+<span class="out">Worker IP:    10.20.3.67</span>
+<span class="out">Workspace:    golang  path=/workspace</span>
+<span class="out"></span>
+<span class="out">Conditions:</span>
+<span class="out">  TYPE            STATUS  REASON         MESSAGE</span>
+<span class="out">  Ready           True    TaskRunning</span>
+<span class="out">  WorkspaceReady  True    SetupComplete</span>
 <span class="prompt">$</span> <span class="cmd">ax get tasks</span>
 <span class="out">NAME   ATESPACE   PHASE     ACTOR   WORKER-IP    AGE</span>
 <span class="out">test   default    Running   test    10.20.3.67   5s</span>
@@ -121,7 +128,7 @@
     if (!el) return;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    var steps = [{"cmd":"cat task.yaml","out":["apiVersion: ax.io/v1alpha1","kind: Workspace","metadata:","  name: golang","spec:","  git:","    - repo: https://github.com/golang/go.git","      branch: \"my-fix\"","---","apiVersion: ax.io/v1alpha1","kind: Task","metadata:","  name: test","spec:","  workspaces:","    - name: golang","      goal: \"Ensure that Go tool chain is available and is built from source\"","  debug: true"],"slow":[0,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20]},{"cmd":"ax apply -f task.yaml","out":["workspace.ax.io/golang created","task.ax.io/test created"]},{"cmd":"ax watch task test","out":["Watching task default/test...","[10:42:01] Phase: Pending    Actor: test               WorkerIP:","[10:42:05] Phase: Running    Actor: test               WorkerIP: 10.20.3.67","Task reached terminal phase \"Running\"."],"slow":[0,100,4000,150]},{"cmd":"ax get tasks","out":["NAME   ATESPACE   PHASE     ACTOR   WORKER-IP    AGE","test   default    Running   test    10.20.3.67   5s"]},{"cmd":"ax ssh test -- ls /workspace","out":["go"]},{"cmd":"ax ssh test -- cd /workspace/go \u0026\u0026 go build ./...","out":[]},{"cmd":"ax ssh test -- ps -o pid,cmd","out":["  PID CMD","    1 /usr/local/bin/ax-task-runner","   12 go build ./..."]},{"cmd":"ax ssh test -- touch notes.txt","out":[]},{"cmd":"ax suspend task test","out":["task.ax.io/test suspended"]},{"cmd":"ax resume task test","out":["task.ax.io/test resumed"]},{"cmd":"ax ssh test -- ls notes.txt","out":["notes.txt"]},{"cmd":"ax suspend task test","out":["task.ax.io/test suspended"]},{"cmd":"ax delete task test","out":["task.ax.io/test deleted"]}];
+    var steps = [{"cmd":"cat task.yaml","out":["apiVersion: ax.io/v1alpha1","kind: Workspace","metadata:","  name: golang","spec:","  git:","    - repo: https://github.com/golang/go.git","      branch: \"my-fix\"","---","apiVersion: ax.io/v1alpha1","kind: Task","metadata:","  name: test","spec:","  workspaces:","    - name: golang","      goal: \"Ensure that Go tool chain is available and is built from source\"","  debug: true"],"slow":[0,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20]},{"cmd":"ax apply -f task.yaml","out":["workspace.ax.io/golang created","task.ax.io/test created"]},{"cmd":"ax describe task test","out":["Name:         test","Atespace:     default","Phase:        Running","Actor:        test","Worker IP:    10.20.3.67","Workspace:    golang  path=/workspace","","Conditions:","  TYPE            STATUS  REASON         MESSAGE","  Ready           True    TaskRunning","  WorkspaceReady  True    SetupComplete"]},{"cmd":"ax get tasks","out":["NAME   ATESPACE   PHASE     ACTOR   WORKER-IP    AGE","test   default    Running   test    10.20.3.67   5s"]},{"cmd":"ax ssh test -- ls /workspace","out":["go"]},{"cmd":"ax ssh test -- cd /workspace/go \u0026\u0026 go build ./...","out":[]},{"cmd":"ax ssh test -- ps -o pid,cmd","out":["  PID CMD","    1 /usr/local/bin/ax-task-runner","   12 go build ./..."]},{"cmd":"ax ssh test -- touch notes.txt","out":[]},{"cmd":"ax suspend task test","out":["task.ax.io/test suspended"]},{"cmd":"ax resume task test","out":["task.ax.io/test resumed"]},{"cmd":"ax ssh test -- ls notes.txt","out":["notes.txt"]},{"cmd":"ax suspend task test","out":["task.ax.io/test suspended"]},{"cmd":"ax delete task test","out":["task.ax.io/test deleted"]}];
 
     var code = el.querySelector('code');
     var cursor;
